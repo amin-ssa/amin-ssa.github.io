@@ -1,18 +1,16 @@
-/* anti-adblock.js – Professional Adblock Detection & Overlay */
+/* security.js – Professional Adblock Detection & Overlay */
 
 (function() {
   'use strict';
 
   async function checkAdblock() {
-    // Method 1: Try fetching a known Google AdSense URL (blocked by 100% of adblockers)
+    // Method 1: Try fetching a known Google AdSense URL
     try {
-      const response = await fetch(new Request('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', {
+      await fetch(new Request('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', {
         method: 'HEAD',
         mode: 'no-cors'
       }));
-      // If it fetches successfully, double check with DOM bait
     } catch (e) {
-      // Fetch failed, which means the domain is blocked by an adblocker!
       return true;
     }
 
