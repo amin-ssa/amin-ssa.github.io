@@ -3,16 +3,37 @@
 (function() {
   'use strict';
 
-  function checkAdblock() {
+  async function checkAdblock() {
+    // Method 1: Try fetching a known Google AdSense URL (blocked by 100% of adblockers)
+    try {
+      const response = await fetch(new Request('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', {
+        method: 'HEAD',
+        mode: 'no-cors'
+      }));
+      // If it fetches successfully, double check with DOM bait
+    } catch (e) {
+      // Fetch failed, which means the domain is blocked by an adblocker!
+      return true;
+    }
+
+    // Method 2: Try fetching one of the active monetization domains
+    try {
+      await fetch(new Request('https://5gvci.com/act/files/tag.min.js?z=11119968', {
+        method: 'HEAD',
+        mode: 'no-cors'
+      }));
+    } catch (e) {
+      return true;
+    }
+
+    // Method 3: DOM bait check
     return new Promise(resolve => {
-      // Create bait element that adblock will hide
       const bait = document.createElement('div');
-      bait.setAttribute('class', 'ad-banner ads adsbygoogle');
+      bait.setAttribute('class', 'ad-banner ads adsbygoogle adsbox ad-container ad-image');
       bait.setAttribute('id', 'ad-bait-check');
-      bait.style.cssText = 'height:1px;width:1px;position:absolute;top:-999px;left:-999px;opacity:0;';
+      bait.style.cssText = 'height:1px;width:1px;position:absolute;top:-999px;left:-999px;opacity:0;display:block !important;visibility:visible !important;';
       document.body.appendChild(bait);
 
-      // Wait briefly for adblock to act
       setTimeout(() => {
         const el = document.getElementById('ad-bait-check');
         const isBlocked = !el ||
@@ -22,7 +43,7 @@
           window.getComputedStyle(el).visibility === 'hidden';
         if (el) el.remove();
         resolve(isBlocked);
-      }, 100);
+      }, 150);
     });
   }
 
