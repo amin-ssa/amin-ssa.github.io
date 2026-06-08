@@ -299,7 +299,7 @@
   <script src="request.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/follow-am/sw.js', { scope: '/follow-am/' })
+      navigator.serviceWorker.register('/sw.js')
         .catch(() => navigator.serviceWorker.register('./sw.js'));
     }
   </script>
