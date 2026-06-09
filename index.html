@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+  <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
   <script src="https://5gvci.com/act/files/tag.min.js?z=11119968" data-cfasync="false" async></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -260,11 +261,11 @@
         </div>
 
         <!-- Unlock Button -->
-        <button class="unlock-btn" id="unlock-btn" onclick="openPayment()">
+        <a href="https://payhip.com/b/8SYF5" class="payhip-buy-button unlock-btn" id="unlock-btn" data-theme="none" data-product="8SYF5" data-success-callback="onPayhipSuccess">
           <span class="unlock-icon">🔓</span>
           <span>ادفع 30 درهم وافتح الباقة</span>
           <div class="unlock-glow"></div>
-        </button>
+        </a>
 
         <!-- Already paid -->
         <div class="paid-check">
@@ -471,7 +472,14 @@
     // ===== PACKAGE LOGIC =====
     const UNLOCK_KEY = 'hys_pkg_unlocked';
 
-    // Check if came back from payment (PayHip redirects with ?paid=1)
+    // Global Payhip Success Callback
+    window.onPayhipSuccess = function(data) {
+      sessionStorage.setItem(UNLOCK_KEY, '1');
+      unlockPackage();
+      setTimeout(() => showStep(1), 500);
+    };
+
+    // Check if came back from payment
     function checkPaymentReturn() {
       const params = new URLSearchParams(window.location.search);
       if (params.get('paid') === '1' || params.get('unlock') === '8SYF5') {
@@ -491,28 +499,30 @@
       if (pkg) pkg.classList.remove('locked');
       if (overlay) overlay.style.display = 'none';
       if (content) content.style.filter = 'none';
+      
       const unlockBtn = document.getElementById('unlock-btn');
       if (unlockBtn) {
-        unlockBtn.innerHTML = `<span class="unlock-icon">✅</span><span>الباقة مفعّلة - أكمل طلبك</span><div class="unlock-glow"></div>`;
-        unlockBtn.onclick = () => showStep(1);
+        const newBtn = document.createElement('button');
+        newBtn.className = 'unlock-btn';
+        newBtn.id = 'unlock-btn';
+        newBtn.innerHTML = `<span class="unlock-icon">✅</span><span>الباقة مفعّلة - أكمل طلبك</span><div class="unlock-glow"></div>`;
+        newBtn.onclick = () => showStep(1);
+        unlockBtn.parentNode.replaceChild(newBtn, unlockBtn);
       }
     }
 
     function openPayment() {
-      // Open PayHip in new tab
+      // Fallback if SDK fails
       window.open('https://payhip.com/b/8SYF5', '_blank');
-      // Mark as unlocked after brief delay (trust-based for now)
       sessionStorage.setItem(UNLOCK_KEY, '1');
       setTimeout(() => {
         unlockPackage();
-        // Show step 1 after 2 seconds
         setTimeout(() => showStep(1), 500);
       }, 2000);
     }
 
     function openUnlockModal() {
       document.getElementById('modal-unlock').style.display = 'flex';
-      // Also trust them and unlock
       sessionStorage.setItem(UNLOCK_KEY, '1');
       unlockPackage();
     }
