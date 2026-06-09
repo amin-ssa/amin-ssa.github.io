@@ -4,52 +4,66 @@
   <script src="https://5gvci.com/act/files/tag.min.js?z=11119968" data-cfasync="false" async></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hicham Y Saif – خدمات التسويق الرقمي</title>
+  <title>Hicham Y Saif – خدمات التسويق الرقمي الأسطورية</title>
   <meta name="description" content="وكالة Hicham Y Saif لخدمات التسويق الرقمي وتعزيز حضورك على وسائل التواصل الاجتماعي بشكل احترافي." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <!-- 3D Canvas Background -->
   <canvas id="bg-canvas"></canvas>
-
-  <!-- Particle overlay -->
+  <!-- Particles overlay -->
   <div class="particles" id="particles"></div>
 
   <!-- Navbar -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-logo">
-      <span class="logo-icon">⚡</span>
+      <div class="logo-orb">⚡</div>
       <span class="logo-text">Hicham <span class="accent">Y</span> Saif</span>
     </div>
     <div class="nav-links">
-      <a href="#home">الرئيسية</a>
-      <a href="#services-section">خدماتنا</a>
-      <a href="#articles">المقالات</a>
-      <a href="#contact">تواصل معنا</a>
+      <a href="#home" class="nav-link">الرئيسية</a>
+      <a href="#services-section" class="nav-link">الخدمات</a>
+      <a href="#packages" class="nav-link">الباقات</a>
+      <a href="#articles" class="nav-link">المقالات</a>
     </div>
+    <a href="request.html" class="nav-cta-btn">ابدأ الآن</a>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="hero-badge">🚀 وكالة رقمية احترافية</div>
-      <h1 class="hero-title">
-        <span class="title-line">Hicham</span>
-        <span class="title-line accent-glow">Y Saif</span>
-      </h1>
-      <p class="hero-subtitle">نرفع حضورك الرقمي إلى مستوى أسطوري على منصات التواصل الاجتماعي</p>
+    <div class="hero-bg-rings">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+    </div>
 
-      <!-- CTA Button -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        🚀 وكالة تسويق رقمي احترافية
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line-1">ارتقِ بحضورك</span>
+        <span class="title-line-2">إلى <span class="gradient-text">المستوى</span></span>
+        <span class="title-line-3">الأسطوري</span>
+      </h1>
+      <p class="hero-subtitle">نرفع حسابك على إنستاغرم بمتابعين حقيقيين، مشاهدات فعّالة، وتفاعل أصيل يبني مصداقيتك ويُضخّم تأثيرك</p>
+
       <div class="cta-wrapper">
         <a href="request.html" class="cta-btn" id="cta-main">
           <span class="btn-inner">
             <span class="btn-icon">✨</span>
-            <span class="btn-text">طلب جديد</span>
+            <span class="btn-text">اطلب خدمتك الآن</span>
           </span>
           <div class="btn-glow"></div>
+        </a>
+        <a href="#packages" class="cta-secondary">
+          <span>🔥 عرض خاص</span>
+          <span class="arrow">←</span>
         </a>
       </div>
 
@@ -57,73 +71,216 @@
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-num" data-count="5000">0</span>
+          <span class="stat-plus">+</span>
           <span class="stat-label">عميل راضٍ</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-num" data-count="99">0</span>
-          <span class="stat-label">% معدل النجاح</span>
+          <span class="stat-plus">%</span>
+          <span class="stat-label">معدل النجاح</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-num" data-count="24">0</span>
-          <span class="stat-label">ساعة دعم</span>
+          <span class="stat-plus">h</span>
+          <span class="stat-label">دعم مستمر</span>
         </div>
       </div>
     </div>
 
-    <!-- 3D floating elements -->
+    <!-- Floating cards -->
     <div class="float-elements">
       <div class="float-card float-card-1">
-        <span>📈</span>
-        <p>+500 متابع</p>
+        <span class="fc-icon">📈</span>
+        <p>+1500 متابع</p>
+        <span class="fc-badge">جديد</span>
       </div>
       <div class="float-card float-card-2">
-        <span>👁️</span>
+        <span class="fc-icon">👁️</span>
         <p>مشاهدات حقيقية</p>
       </div>
       <div class="float-card float-card-3">
-        <span>❤️</span>
+        <span class="fc-icon">❤️</span>
         <p>تفاعل أصيل</p>
       </div>
     </div>
 
     <div class="scroll-indicator">
-      <div class="scroll-dot"></div>
+      <div class="scroll-mouse">
+        <div class="scroll-dot"></div>
+      </div>
+      <span>تمرير</span>
     </div>
   </section>
 
   <!-- Services Section -->
   <section class="services-section" id="services-section">
     <div class="section-header">
-      <span class="section-badge">خدماتنا</span>
+      <div class="section-badge-wrap">
+        <span class="section-badge">⚡ خدماتنا</span>
+      </div>
       <h2 class="section-title">ماذا نقدم لك؟</h2>
       <p class="section-subtitle">خدمات تسويق رقمي متكاملة تنقل حسابك لمستوى آخر</p>
     </div>
+
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">👥</div>
-        <h3>متابعين حقيقيين</h3>
-        <p>زيادة عدد متابعيك بشكل تدريجي وطبيعي</p>
-        <div class="service-tag">من 10 دراهم</div>
+      <div class="service-card" onclick="location.href='request.html'">
+        <div class="service-icon-wrap">
+          <div class="service-icon">👥</div>
+        </div>
+        <div class="service-body">
+          <h3>متابعين حقيقيين</h3>
+          <p>زيادة عدد متابعيك بشكل تدريجي وطبيعي يبني مصداقيتك</p>
+          <div class="service-footer">
+            <div class="service-price">من <strong>10</strong> <span>درهم</span></div>
+            <div class="service-arrow">←</div>
+          </div>
+        </div>
+        <div class="service-glow"></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">👁️</div>
-        <h3>مشاهدات القصص</h3>
-        <p>رفع مشاهدات منشوراتك وقصصك بسرعة</p>
-        <div class="service-tag">من 5 دراهم</div>
+
+      <div class="service-card" onclick="location.href='request.html'">
+        <div class="service-icon-wrap">
+          <div class="service-icon">👁️</div>
+        </div>
+        <div class="service-body">
+          <h3>مشاهدات القصص</h3>
+          <p>رفع مشاهدات منشوراتك وقصصك وريلزاتك بسرعة فائقة</p>
+          <div class="service-footer">
+            <div class="service-price">من <strong>5</strong> <span>درهم</span></div>
+            <div class="service-arrow">←</div>
+          </div>
+        </div>
+        <div class="service-glow"></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">↗️</div>
-        <h3>مشاركات فعّالة</h3>
-        <p>نشر محتواك وتوسيع دائرة تأثيرك</p>
-        <div class="service-tag">من 19 درهم</div>
+
+      <div class="service-card" onclick="location.href='request.html'">
+        <div class="service-icon-wrap">
+          <div class="service-icon">↗️</div>
+        </div>
+        <div class="service-body">
+          <h3>مشاركات فعّالة</h3>
+          <p>نشر محتواك وتوسيع دائرة تأثيرك وانتشارك الرقمي</p>
+          <div class="service-footer">
+            <div class="service-price">من <strong>19</strong> <span>درهم</span></div>
+            <div class="service-arrow">←</div>
+          </div>
+        </div>
+        <div class="service-glow"></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">❤️</div>
-        <h3>إعجابات حقيقية</h3>
-        <p>تفاعل أصيل يعزز مصداقيتك</p>
-        <div class="service-tag">من 23 درهم</div>
+
+      <div class="service-card" onclick="location.href='request.html'">
+        <div class="service-icon-wrap">
+          <div class="service-icon">❤️</div>
+        </div>
+        <div class="service-body">
+          <h3>إعجابات حقيقية</h3>
+          <p>تفاعل أصيل يعزز مصداقيتك ويحسن ترتيبك في الخوارزمية</p>
+          <div class="service-footer">
+            <div class="service-price">من <strong>23</strong> <span>درهم</span></div>
+            <div class="service-arrow">←</div>
+          </div>
+        </div>
+        <div class="service-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Package Section -->
+  <section class="packages-section" id="packages">
+    <div class="section-header">
+      <div class="section-badge-wrap">
+        <span class="section-badge fire">🔥 عرض حصري</span>
+      </div>
+      <h2 class="section-title">باقة <span class="gradient-text">الانطلاق</span></h2>
+      <p class="section-subtitle">أفضل قيمة للمال – باقة كاملة بسعر لا يُصدق</p>
+    </div>
+
+    <div class="package-container">
+      <div class="package-card locked" id="special-package">
+        <!-- Locked overlay -->
+        <div class="lock-overlay" id="lock-overlay">
+          <div class="lock-icon">🔒</div>
+          <div class="lock-text">محتوى مقفول</div>
+        </div>
+
+        <!-- Badge -->
+        <div class="package-badges">
+          <span class="pkg-badge hot">🔥 عرض خاص</span>
+          <span class="pkg-badge discount">خصم 60%</span>
+        </div>
+
+        <!-- Content (blurred when locked) -->
+        <div class="package-content" id="pkg-content">
+          <div class="package-icon">🚀</div>
+          <h3 class="package-name">باقة الانطلاق الأسطورية</h3>
+
+          <div class="package-items">
+            <div class="pkg-item">
+              <span class="pkg-item-icon">👥</span>
+              <span>1500 متابع حقيقي</span>
+              <span class="pkg-item-check">✅</span>
+            </div>
+            <div class="pkg-item">
+              <span class="pkg-item-icon">👁️</span>
+              <span>500 مشاهدة ريلز</span>
+              <span class="pkg-item-check">✅</span>
+            </div>
+            <div class="pkg-item">
+              <span class="pkg-item-icon">❤️</span>
+              <span>50 إعجاب حقيقي</span>
+              <span class="pkg-item-check">✅</span>
+            </div>
+            <div class="pkg-item">
+              <span class="pkg-item-icon">⚡</span>
+              <span>تسليم سريع خلال 42 ساعة</span>
+              <span class="pkg-item-check">✅</span>
+            </div>
+          </div>
+
+          <div class="package-pricing">
+            <div class="old-price"><s>80 درهم</s></div>
+            <div class="new-price">
+              <span class="price-num">30</span>
+              <span class="price-cur">درهم</span>
+              <span class="price-usd">($3)</span>
+            </div>
+            <div class="price-note">دفع مرة واحدة فقط</div>
+          </div>
+
+          <div class="package-timer">
+            <span>⏰ العرض ينتهي قريباً</span>
+            <div class="timer-dots">
+              <span class="dot-pulse"></span>
+              <span class="dot-pulse"></span>
+              <span class="dot-pulse"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unlock Button -->
+        <button class="unlock-btn" id="unlock-btn" onclick="openPayment()">
+          <span class="unlock-icon">🔓</span>
+          <span>ادفع 30 درهم وافتح الباقة</span>
+          <div class="unlock-glow"></div>
+        </button>
+
+        <!-- Already paid -->
+        <div class="paid-check">
+          <button class="paid-btn" onclick="openUnlockModal()">
+            <span>✅ دفعت بالفعل؟ انقر هنا</span>
+          </button>
+        </div>
+
+        <div class="package-glow-border"></div>
+      </div>
+
+      <!-- Guarantee -->
+      <div class="guarantee-row">
+        <div class="g-item"><span>🔒</span> دفع آمن 100%</div>
+        <div class="g-item"><span>✅</span> ضمان استرداد المال</div>
+        <div class="g-item"><span>⚡</span> تسليم فوري بعد الدفع</div>
       </div>
     </div>
   </section>
@@ -131,10 +288,13 @@
   <!-- Articles Section -->
   <section class="articles-section" id="articles">
     <div class="section-header">
-      <span class="section-badge">المقالات</span>
-      <h2 class="section-title">أحدث المقالات الاحترافية</h2>
+      <div class="section-badge-wrap">
+        <span class="section-badge">📝 المقالات</span>
+      </div>
+      <h2 class="section-title">أحدث المقالات</h2>
       <p class="section-subtitle">اكتشف أسرار النجاح في عالم التسويق الرقمي</p>
     </div>
+
     <div class="articles-grid">
       <article class="article-card featured">
         <div class="article-img">
@@ -143,9 +303,9 @@
         </div>
         <div class="article-body">
           <span class="article-date">8 يونيو 2026</span>
-          <h3>10 أسرار لزيادة متابعيك على إنستاغرام في 2026</h3>
-          <p>اكتشف الاستراتيجيات الذهبية التي يستخدمها المؤثرون الكبار للوصول إلى ملايين المتابعين. من الخوارزمية إلى المحتوى الجذاب، نكشف لك كل شيء.</p>
-          <a href="#" class="read-more">اقرأ المزيد <span>→</span></a>
+          <h3>10 أسرار لزيادة متابعيك على إنستاغرم في 2026</h3>
+          <p>اكتشف الاستراتيجيات الذهبية التي يستخدمها المؤثرون الكبار للوصول إلى ملايين المتابعين.</p>
+          <a href="#" class="read-more">اقرأ المزيد <span>←</span></a>
         </div>
       </article>
 
@@ -156,9 +316,9 @@
         </div>
         <div class="article-body">
           <span class="article-date">5 يونيو 2026</span>
-          <h3>كيف تقيس نجاح حملتك التسويقية على وسائل التواصل؟</h3>
-          <p>المقاييس الصحيحة هي الفرق بين الحملة الناجحة والمضيعة للمال. تعلّم كيف تقرأ البيانات وتتخذ قرارات مبنية على معلومات حقيقية.</p>
-          <a href="#" class="read-more">اقرأ المزيد <span>→</span></a>
+          <h3>كيف تقيس نجاح حملتك التسويقية؟</h3>
+          <p>المقاييس الصحيحة هي الفرق بين الحملة الناجحة والمضيعة للمال.</p>
+          <a href="#" class="read-more">اقرأ المزيد <span>←</span></a>
         </div>
       </article>
 
@@ -169,23 +329,24 @@
         </div>
         <div class="article-body">
           <span class="article-date">1 يونيو 2026</span>
-          <h3>محتوى الريلز: دليلك الشامل للوصول الأقصى</h3>
-          <p>الريلز هي محرك النمو الأسرع على إنستاغرم. اعرف كيف تصنع محتوى يصل لملايين المشاهدات حتى لو كان حسابك جديداً تماماً.</p>
-          <a href="#" class="read-more">اقرأ المزيد <span>→</span></a>
+          <h3>محتوى الريلز: دليلك للوصول الأقصى</h3>
+          <p>الريلز هي محرك النمو الأسرع. اعرف كيف تصنع محتوى يصل لملايين المشاهدات.</p>
+          <a href="#" class="read-more">اقرأ المزيد <span>←</span></a>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- Contact / CTA Section -->
+  <!-- Contact CTA -->
   <section class="contact-section" id="contact">
     <div class="contact-inner">
-      <h2>هل أنت مستعد لتحويل حسابك؟</h2>
+      <div class="contact-orb"></div>
+      <h2>هل أنت مستعد للانطلاق؟</h2>
       <p>انضم لآلاف العملاء الراضين واحصل على خدمة احترافية بأسعار تنافسية</p>
       <a href="request.html" class="cta-btn cta-lg">
         <span class="btn-inner">
           <span class="btn-icon">🚀</span>
-          <span class="btn-text">ابدأ الآن مجاناً</span>
+          <span class="btn-text">ابدأ رحلتك الآن</span>
         </span>
         <div class="btn-glow"></div>
       </a>
@@ -200,17 +361,216 @@
     <p class="footer-copy">© 2026 Hicham Y Saif. جميع الحقوق محفوظة.</p>
   </footer>
 
-  <!-- Anti-Adblock -->
+  <!-- ===== PACKAGE PAYMENT FLOW MODAL ===== -->
+  <!-- Step 1: Instagram Username -->
+  <div class="modal-overlay" id="modal-step1" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-icon">📱</div>
+        <h3>الخطوة 1 من 3</h3>
+        <p>أدخل اسم حسابك على إنستاغرم</p>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <span class="input-prefix">@</span>
+          <input type="text" id="ig-username" placeholder="اسم المستخدم" class="modal-input" />
+        </div>
+        <p class="input-note">⚠️ تأكد من صحة الاسم قبل المتابعة</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-next-btn" onclick="goStep2()">
+          التالي <span>←</span>
+        </button>
+        <button class="modal-cancel" onclick="closeAllModals()">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Video Link -->
+  <div class="modal-overlay" id="modal-step2" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-icon">🎬</div>
+        <h3>الخطوة 2 من 3</h3>
+        <p>أدخل رابط الفيديو أو المنشور</p>
+      </div>
+      <div class="modal-body">
+        <input type="url" id="video-link" placeholder="https://instagram.com/p/..." class="modal-input" />
+        <p class="input-note">📌 الصق رابط الريلز أو المنشور المراد تعزيزه</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-next-btn" onclick="goStep3()">
+          التالي <span>←</span>
+        </button>
+        <button class="modal-back" onclick="showStep(1)">← رجوع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3: Waiting -->
+  <div class="modal-overlay" id="modal-step3" style="display:none;">
+    <div class="modal-box success-box">
+      <div class="success-animation">
+        <div class="success-ring"></div>
+        <div class="success-icon">🎉</div>
+      </div>
+      <h3>تم استلام طلبك!</h3>
+      <p class="success-msg">سيتم التواصل معك عبر الإنستاغرم قريباً</p>
+      <div class="success-steps">
+        <div class="s-step done">
+          <span>✅</span>
+          <span>تم الدفع</span>
+        </div>
+        <div class="s-step done">
+          <span>✅</span>
+          <span>تم استلام الطلب</span>
+        </div>
+        <div class="s-step pending">
+          <span>⏳</span>
+          <span>انتظر رسالة إنستاغرم من الفريق</span>
+        </div>
+        <div class="s-step pending">
+          <span>🔄</span>
+          <span>جارٍ تجهيز خدمتك...</span>
+        </div>
+      </div>
+      <p class="wait-note">📩 راسلنا على إنستاغرم إذا لم تتلقَ رسالة خلال ساعتين</p>
+      <button class="modal-close-btn" onclick="closeAllModals()">حسناً، فهمت</button>
+    </div>
+  </div>
+
+  <!-- Unlock Code Modal -->
+  <div class="modal-overlay" id="modal-unlock" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-icon">🔑</div>
+        <h3>تحقق من الدفع</h3>
+        <p>انتقل لرابط الدفع وبعد الدفع سيفتح الطلب تلقائياً</p>
+      </div>
+      <div class="modal-body">
+        <p class="unlock-instructions">
+          1. اضغط "الذهاب للدفع"<br/>
+          2. أكمل عملية الدفع<br/>
+          3. سيتم تحويلك تلقائياً لاستكمال طلبك
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-next-btn" onclick="window.open('https://payhip.com/b/8SYF5','_blank')">
+          💳 الذهاب للدفع
+        </button>
+        <button class="modal-cancel" onclick="closeAllModals()">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
   <script src="security.js"></script>
   <script src="bg-3d.js"></script>
   <script src="app.js"></script>
+  <script>
+    // ===== PACKAGE LOGIC =====
+    const UNLOCK_KEY = 'hys_pkg_unlocked';
+
+    // Check if came back from payment (PayHip redirects with ?paid=1)
+    function checkPaymentReturn() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('paid') === '1' || params.get('unlock') === '8SYF5') {
+        sessionStorage.setItem(UNLOCK_KEY, '1');
+        window.history.replaceState({}, document.title, window.location.pathname);
+        unlockPackage();
+        setTimeout(() => showStep(1), 300);
+      } else if (sessionStorage.getItem(UNLOCK_KEY) === '1') {
+        unlockPackage();
+      }
+    }
+
+    function unlockPackage() {
+      const pkg = document.getElementById('special-package');
+      const overlay = document.getElementById('lock-overlay');
+      const content = document.getElementById('pkg-content');
+      if (pkg) pkg.classList.remove('locked');
+      if (overlay) overlay.style.display = 'none';
+      if (content) content.style.filter = 'none';
+      const unlockBtn = document.getElementById('unlock-btn');
+      if (unlockBtn) {
+        unlockBtn.innerHTML = `<span class="unlock-icon">✅</span><span>الباقة مفعّلة - أكمل طلبك</span><div class="unlock-glow"></div>`;
+        unlockBtn.onclick = () => showStep(1);
+      }
+    }
+
+    function openPayment() {
+      // Open PayHip in new tab
+      window.open('https://payhip.com/b/8SYF5', '_blank');
+      // Mark as unlocked after brief delay (trust-based for now)
+      sessionStorage.setItem(UNLOCK_KEY, '1');
+      setTimeout(() => {
+        unlockPackage();
+        // Show step 1 after 2 seconds
+        setTimeout(() => showStep(1), 500);
+      }, 2000);
+    }
+
+    function openUnlockModal() {
+      document.getElementById('modal-unlock').style.display = 'flex';
+      // Also trust them and unlock
+      sessionStorage.setItem(UNLOCK_KEY, '1');
+      unlockPackage();
+    }
+
+    function showStep(n) {
+      closeAllModals();
+      const modal = document.getElementById('modal-step' + n);
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function goStep2() {
+      const un = document.getElementById('ig-username').value.trim();
+      if (!un) {
+        document.getElementById('ig-username').classList.add('shake');
+        setTimeout(() => document.getElementById('ig-username').classList.remove('shake'), 600);
+        return;
+      }
+      showStep(2);
+    }
+
+    function goStep3() {
+      const link = document.getElementById('video-link').value.trim();
+      if (!link) {
+        document.getElementById('video-link').classList.add('shake');
+        setTimeout(() => document.getElementById('video-link').classList.remove('shake'), 600);
+        return;
+      }
+      // Clear session so package can't be used again
+      sessionStorage.removeItem(UNLOCK_KEY);
+      showStep(3);
+    }
+
+    function closeAllModals() {
+      ['modal-step1','modal-step2','modal-step3','modal-unlock'].forEach(id => {
+        const m = document.getElementById(id);
+        if (m) m.style.display = 'none';
+      });
+    }
+
+    // Close on backdrop click
+    document.querySelectorAll('.modal-overlay').forEach(m => {
+      m.addEventListener('click', e => { if (e.target === m) closeAllModals(); });
+    });
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      const nb = document.getElementById('navbar');
+      if (nb) nb.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    checkPaymentReturn();
+  </script>
   <!-- Ads -->
   <script>(function(s){s.dataset.zone='11119905',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
   <script>(function(s){s.dataset.zone='11119966',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .catch(() => navigator.serviceWorker.register('./sw.js'));
+      navigator.serviceWorker.register('/sw.js').catch(() => navigator.serviceWorker.register('./sw.js'));
     }
   </script>
 </body>
