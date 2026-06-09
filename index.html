@@ -500,6 +500,9 @@
       if (overlay) overlay.style.display = 'none';
       if (content) content.style.filter = 'none';
       
+      const paidCheck = document.querySelector('.paid-check');
+      if (paidCheck) paidCheck.style.display = 'none';
+
       const unlockBtn = document.getElementById('unlock-btn');
       if (unlockBtn) {
         const newBtn = document.createElement('button');
@@ -512,19 +515,12 @@
     }
 
     function openPayment() {
-      // Fallback if SDK fails
+      // Fallback redirect if SDK doesn't load
       window.open('https://payhip.com/b/8SYF5', '_blank');
-      sessionStorage.setItem(UNLOCK_KEY, '1');
-      setTimeout(() => {
-        unlockPackage();
-        setTimeout(() => showStep(1), 500);
-      }, 2000);
     }
 
     function openUnlockModal() {
       document.getElementById('modal-unlock').style.display = 'flex';
-      sessionStorage.setItem(UNLOCK_KEY, '1');
-      unlockPackage();
     }
 
     function showStep(n) {
