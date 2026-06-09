@@ -5,6 +5,16 @@ const nodemailer = require('nodemailer');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
+
+// ===== 0. PORT BINDING FOR RENDER FREE TIER =====
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+  res.end('🤖 Bot is active and running 24/7!');
+}).listen(PORT, () => {
+  console.log(`📡 HTTP Keep-alive server running on port ${PORT}`);
+});
 
 // ===== 1. FIREBASE INITIALIZATION =====
 let db;

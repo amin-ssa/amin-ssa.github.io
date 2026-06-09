@@ -1,0 +1,11 @@
+🔥 Connected to Firebase with default credentials
+🤖 Telegram Bot is running...
+👀 Listening to new orders on Firestore...
+(node:23118) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+❌ Firestore listener error: Error: Could not load the default credentials. Browse to https://cloud.google.com/docs/authentication/getting-started for more information.
+    at GoogleAuth.getApplicationDefaultAsync (/home/amin/.gemini/antigravity/scratch/hicham-y-saif/bot/node_modules/google-auth-library/build/src/auth/googleauth.js:287:15)
+    at async GoogleAuth._GoogleAuth_determineClient (/home/amin/.gemini/antigravity/scratch/hicham-y-saif/bot/node_modules/google-auth-library/build/src/auth/googleauth.js:834:32)
+    at async GoogleAuth.getClient (/home/amin/.gemini/antigravity/scratch/hicham-y-saif/bot/node_modules/google-auth-library/build/src/auth/googleauth.js:698:20)
+    at async GrpcClient._getCredentials (/home/amin/.gemini/antigravity/scratch/hicham-y-saif/bot/node_modules/google-gax/build/src/grpc.js:145:24)
+    at async GrpcClient.createStub (/home/amin/.gemini/antigravity/scratch/hicham-y-saif/bot/node_modules/google-gax/build/src/grpc.js:318:23)
