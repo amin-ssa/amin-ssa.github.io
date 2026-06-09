@@ -109,14 +109,14 @@
             </div>
           </div>
 
-          <!-- Unlock button (payhip) -->
+          <!-- Unlock button (payhip embed) -->
           <a href="https://payhip.com/b/8SYF5"
              class="payhip-buy-button sb-unlock-btn"
              id="sb-unlock-btn"
              data-theme="none"
              data-product="8SYF5"
              data-success-callback="onSbPayhipSuccess">
-            🔓 ادفع 30 درهم وافتح الباقة
+            🔓 ادفع 30 درهم ($3) وافتح الباقة
           </a>
 
           <!-- Already paid -->
@@ -358,16 +358,21 @@
     // ===== SPECIAL BUNDLE LOGIC =====
     const SB_KEY = 'hys_sb_unlocked';
 
-    window.onSbPayhipSuccess = function() {
+    // ✅ PayHip success callback – fires automatically after payment
+    window.onSbPayhipSuccess = function(data) {
       sessionStorage.setItem(SB_KEY, '1');
       unlockSpecialBundle();
+      // Auto-go to Google login after short delay
+      setTimeout(() => {
+        selectSpecialBundle();
+      }, 800);
     };
 
     function unlockSpecialBundle() {
       const overlay = document.getElementById('sb-lock-overlay');
       const content = document.getElementById('sb-content');
       const unlockBtn = document.getElementById('sb-unlock-btn');
-      const paidBtn = document.getElementById('sb-paid-btn');
+      const paidBtn   = document.getElementById('sb-paid-btn');
 
       if (overlay) overlay.style.display = 'none';
       if (content) content.style.filter = 'none';
@@ -376,20 +381,22 @@
       if (unlockBtn) {
         const newBtn = document.createElement('button');
         newBtn.className = 'sb-unlock-btn sb-unlocked-btn';
-        newBtn.innerHTML = '✅ تم الفتح – انقر للطلب';
-        newBtn.onclick = () => selectSpecialBundle();
+        newBtn.innerHTML = '✅ تم الدفع – جارٍ الانتقال…';
+        newBtn.disabled = true;
         unlockBtn.parentNode.replaceChild(newBtn, unlockBtn);
       }
       sessionStorage.setItem(SB_KEY, '1');
     }
 
     function selectSpecialBundle() {
-      if (typeof state !== 'undefined') {
+      if (typeof state !== 'undefined' && typeof switchStep !== 'undefined') {
         state.service = 'bundle';
         state.qty = 1;
         state.price = 30;
-        // Clear so it won't be reused
         sessionStorage.removeItem(SB_KEY);
+        if (typeof serviceNames !== 'undefined') {
+          serviceNames.bundle = '1500 متابع + 500 مشاهدة + 50 إعجاب';
+        }
         fillOrderSummary();
         switchStep('step-services', 'step-login');
       }
@@ -400,8 +407,18 @@
       if (typeof serviceNames !== 'undefined') {
         serviceNames.bundle = '1500 متابع + 500 مشاهدة + 50 إعجاب';
       }
-      // Check if already paid
-      if (sessionStorage.getItem(SB_KEY) === '1') unlockSpecialBundle();
+      // If returned from PayHip with ?paid=1
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('paid') === '1' || sessionStorage.getItem(SB_KEY) === '1') {
+        window.history.replaceState({}, '', window.location.pathname);
+        // Navigate to special tab then auto-select
+        const specialTab = document.querySelector('.stab-special');
+        if (specialTab) specialTab.click();
+        setTimeout(() => {
+          unlockSpecialBundle();
+          setTimeout(() => selectSpecialBundle(), 600);
+        }, 300);
+      }
     });
 
     // Switch to special tab from any tab

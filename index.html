@@ -472,11 +472,12 @@
     // ===== PACKAGE LOGIC =====
     const UNLOCK_KEY = 'hys_pkg_unlocked';
 
-    // Global Payhip Success Callback
+    // ✅ PayHip success callback – fires automatically after payment
     window.onPayhipSuccess = function(data) {
       sessionStorage.setItem(UNLOCK_KEY, '1');
       unlockPackage();
-      setTimeout(() => showStep(1), 500);
+      // Auto-show Instagram username step after 600ms
+      setTimeout(() => showStep(1), 600);
     };
 
     // Check if came back from payment
