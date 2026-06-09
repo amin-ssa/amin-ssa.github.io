@@ -44,8 +44,20 @@ document.querySelectorAll('.stab').forEach(tab => {
     document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     const svc = tab.dataset.service;
-    document.querySelectorAll('.packages').forEach(p => p.classList.add('hidden'));
-    document.getElementById('pkg-' + svc).classList.remove('hidden');
+
+    // Hide all package panels
+    document.querySelectorAll('.packages').forEach(p => {
+      p.classList.add('hidden');
+      p.style.display = 'none';
+    });
+
+    // Show the right one
+    const panel = document.getElementById('pkg-' + svc);
+    if (panel) {
+      panel.classList.remove('hidden');
+      panel.style.display = svc === 'special' ? 'block' : '';
+    }
+
     document.querySelectorAll('.pkg-card.selected').forEach(c => c.classList.remove('selected'));
     state.service = ''; state.qty = 0; state.price = 0;
   });

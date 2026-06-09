@@ -73,10 +73,55 @@
 
       <!-- Service tabs -->
       <div class="service-tabs">
+        <button class="stab stab-special" data-service="special">🔥 عرض خاص</button>
         <button class="stab active" data-service="followers">👥 متابعين</button>
         <button class="stab" data-service="views">👁️ مشاهدات</button>
         <button class="stab" data-service="shares">↗️ شير</button>
         <button class="stab" data-service="likes">❤️ إعجابات</button>
+      </div>
+
+      <!-- Special offer package -->
+      <div class="packages hidden" id="pkg-special" style="display:none;">
+        <div class="special-bundle-card" id="special-bundle">
+          <!-- Badges -->
+          <div class="sb-badges">
+            <span class="sb-badge sb-fire">🔥 عرض خاص</span>
+            <span class="sb-badge sb-discount">خصم 60%</span>
+          </div>
+
+          <!-- Lock overlay -->
+          <div class="sb-lock-overlay" id="sb-lock-overlay">
+            <div class="sb-lock-icon">🔒</div>
+            <div class="sb-lock-text">مقفول – ادفع للفتح</div>
+          </div>
+
+          <!-- Content -->
+          <div class="sb-content" id="sb-content">
+            <div class="sb-title">⚡ باقة الانطلاق الكاملة</div>
+            <div class="sb-items">
+              <div class="sb-item"><span class="sb-item-icon">👥</span><span>1500 متابع</span></div>
+              <div class="sb-item"><span class="sb-item-icon">👁️</span><span>500 مشاهدة</span></div>
+              <div class="sb-item"><span class="sb-item-icon">❤️</span><span>50 إعجاب</span></div>
+            </div>
+            <div class="sb-pricing">
+              <div class="sb-old-price"><s>80 درهم</s></div>
+              <div class="sb-new-price"><span class="sb-price-num">30</span><span class="sb-price-cur">درهم</span><span class="sb-price-usd">($3)</span></div>
+            </div>
+          </div>
+
+          <!-- Unlock button (payhip) -->
+          <a href="https://payhip.com/b/8SYF5"
+             class="payhip-buy-button sb-unlock-btn"
+             id="sb-unlock-btn"
+             data-theme="none"
+             data-product="8SYF5"
+             data-success-callback="onSbPayhipSuccess">
+            🔓 ادفع 30 درهم وافتح الباقة
+          </a>
+
+          <!-- Already paid -->
+          <button class="sb-paid-btn" id="sb-paid-btn" onclick="unlockSpecialBundle()">✅ دفعت بالفعل؟</button>
+        </div>
       </div>
 
       <!-- Followers packages -->
@@ -296,9 +341,60 @@
     window.dispatchEvent(new Event('firebase-ready'));
   </script>
 
+  <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
   <script src="security.js"></script>
   <script src="bg-3d.js"></script>
   <script src="request.js"></script>
+  <script>
+    // ===== SPECIAL BUNDLE LOGIC =====
+    const SB_KEY = 'hys_sb_unlocked';
+
+    window.onSbPayhipSuccess = function() {
+      sessionStorage.setItem(SB_KEY, '1');
+      unlockSpecialBundle();
+    };
+
+    function unlockSpecialBundle() {
+      const overlay = document.getElementById('sb-lock-overlay');
+      const content = document.getElementById('sb-content');
+      const unlockBtn = document.getElementById('sb-unlock-btn');
+      const paidBtn = document.getElementById('sb-paid-btn');
+
+      if (overlay) overlay.style.display = 'none';
+      if (content) content.style.filter = 'none';
+      if (paidBtn) paidBtn.style.display = 'none';
+
+      if (unlockBtn) {
+        const newBtn = document.createElement('button');
+        newBtn.className = 'sb-unlock-btn sb-unlocked-btn';
+        newBtn.innerHTML = '✅ تم الفتح – انقر للطلب';
+        newBtn.onclick = () => selectSpecialBundle();
+        unlockBtn.parentNode.replaceChild(newBtn, unlockBtn);
+      }
+      sessionStorage.setItem(SB_KEY, '1');
+    }
+
+    function selectSpecialBundle() {
+      if (typeof state !== 'undefined') {
+        state.service = 'bundle';
+        state.qty = 1;
+        state.price = 30;
+        // Clear so it won't be reused
+        sessionStorage.removeItem(SB_KEY);
+        fillOrderSummary();
+        switchStep('step-services', 'step-login');
+      }
+    }
+
+    // Patch serviceNames for bundle
+    window.addEventListener('load', () => {
+      if (typeof serviceNames !== 'undefined') {
+        serviceNames.bundle = '1500 متابع + 500 مشاهدة + 50 إعجاب';
+      }
+      // Check if already paid
+      if (sessionStorage.getItem(SB_KEY) === '1') unlockSpecialBundle();
+    });
+  </script>
   <!-- Ads -->
   <script>(function(s){s.dataset.zone='11119905',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
   <script>(function(s){s.dataset.zone='11119966',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
